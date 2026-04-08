@@ -1,11 +1,10 @@
 import React from "react";
+import Banner from "../Component/Hompage/Banner";
 
 const Homepage = () => {
   return (
     <div>
-      <h1 className="bg-amber-600 text-center w-11/12 mx-auto text-3xl">
-        HomePage
-      </h1>
+      <Banner />
     </div>
   );
 };
