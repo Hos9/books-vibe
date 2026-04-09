@@ -34,7 +34,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="bg-base-100 shadow-sm ">
+    <nav className="bg-base-100 shadow-sm my-10 ">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -62,7 +62,7 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className="font-bold text-2xl">Book Vibe</a>
+          <Link to={'/'} className="font-bold text-2xl">Book Vibe</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="">{links}</ul>
