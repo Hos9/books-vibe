@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { BookContext } from "../Context/BookCOntext";
 
 const Books = () => {
+  const { storedBook } = useContext(BookContext);
+  console.log(storedBook, "bookContext");
+
   return (
-    <div>
-      <h1 className="bg-amber-400 text-center container mx-auto text-3xl">
-        My Books
-      </h1>
+    <div className="container mx-auto">
+      <h1 className="">My Books</h1>
     </div>
   );
 };

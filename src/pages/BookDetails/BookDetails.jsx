@@ -29,28 +29,8 @@ const BookDetails = () => {
     yearOfPublishing,
   } = expectedBook;
 
-  const bookContext = useContext(BookContext);
-  console.log(bookContext, "bookContext");
-
-  const [storedBook, setStoredBook] = useState([]);
-
-  const handleMarkAsRead = (currentBook) => {
-    // Step:1 - Store book id
-    // Step:2 - where to store
-    const isExistBook = storedBook.find(
-      (book) => book.bookId === currentBook.bookId,
-    );
-    if (isExistBook) {
-      alert("The book is already exist!!");
-    } else {
-      alert(`${bookName} is added in Read list`);
-      setStoredBook([...storedBook, currentBook]);
-    }
-    // Step:2 - array or collection
-    // Step:3 - if the book is already exist then show a alert or toast
-    // Step:4 - If not the add to Read List array
-    console.log(currentBook, storedBook, "book");
-  };
+  const { handleMarkAsRead, storedBook } = useContext(BookContext);
+  // console.log(handleMarkAsRead, storedBook, "bookContext");
 
   return (
     <div className="container mx-auto my-4 py-4">
