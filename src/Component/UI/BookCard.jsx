@@ -6,7 +6,7 @@ const BookCard = ({ book }) => {
   return (
     <div className="">
       <Link
-        to={`./bookDetails/${book.bookId}`}
+        to={`/bookDetails/${book.bookId}`}
         className="card bg-base-200 p-10 shadow-sm"
       >
         <figure>

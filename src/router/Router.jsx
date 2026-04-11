@@ -20,9 +20,9 @@ export const router = createBrowserRouter([
         element: <Books />,
       },
       {
-        path: "/bookDetails/:bookId",
-        element: <BookDetails />,
-        loader: () => fetch("./booksData.json"),
+        path: "/bookDetails/:bkId",
+        Component: BookDetails,
+        loader: () => fetch("/booksData.json"),
       },
     ],
     errorElement: <ErrorPage />,

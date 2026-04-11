@@ -1,19 +1,20 @@
-import React, { use } from "react";
+import React, { use, useContext, useState } from "react";
 import { useLoaderData, useParams } from "react-router";
+import { BookContext } from "../../Context/BookCOntext";
 
 // const booksPromise = fetch("/booksData.json").then((res) => res.json());
 
 const BookDetails = () => {
-  const { bookId: bookParamsId } = useParams();
+  const { bkId } = useParams();
   // console.log(bookId, "bookId");
 
   // const books = use(booksPromise);
 
   const books = useLoaderData();
-  console.log(books, "Books");
+  // console.log(books, "Books");
 
-  const expectedBook = books.find((book) => book.bookId == bookParamsId);
-  console.log(expectedBook, "expectedBook");
+  const expectedBook = books.find((book) => book.bookId === Number(bkId));
+  // console.log(expectedBook, "expectedBook");
   const {
     bookId,
     bookName,
@@ -27,6 +28,29 @@ const BookDetails = () => {
     publisher,
     yearOfPublishing,
   } = expectedBook;
+
+  const bookContext = useContext(BookContext);
+  console.log(bookContext, "bookContext");
+
+  const [storedBook, setStoredBook] = useState([]);
+
+  const handleMarkAsRead = (currentBook) => {
+    // Step:1 - Store book id
+    // Step:2 - where to store
+    const isExistBook = storedBook.find(
+      (book) => book.bookId === currentBook.bookId,
+    );
+    if (isExistBook) {
+      alert("The book is already exist!!");
+    } else {
+      alert(`${bookName} is added in Read list`);
+      setStoredBook([...storedBook, currentBook]);
+    }
+    // Step:2 - array or collection
+    // Step:3 - if the book is already exist then show a alert or toast
+    // Step:4 - If not the add to Read List array
+    console.log(currentBook, storedBook, "book");
+  };
 
   return (
     <div className="container mx-auto my-4 py-4">
@@ -67,8 +91,13 @@ const BookDetails = () => {
             </p>
           </div>
           <div className="card-actions justify-left flex items-center gap-7">
-            <button className="btn btn-primary ">Read</button>
-            <button className="btn btn-soft btn-info">Wishlist</button>
+            <button
+              className="btn btn-primary"
+              onClick={() => handleMarkAsRead(expectedBook)}
+            >
+              Mark as Read
+            </button>
+            <button className="btn btn-soft btn-info">Add to Wishlist</button>
           </div>
         </div>
       </div>
